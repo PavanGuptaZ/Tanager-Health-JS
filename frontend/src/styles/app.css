@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'Lexend Deca', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.fullbody {
+    min-width: 1080px;
+    width: 100%;
+    min-height: 550px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+body {
+    background: #FFFAE0;
+    /* background: #fff; */
+}
+
+.tosterIcon {
+    width: 100%;
+}
+
+.Toastify__toast-icon {
+    width: 40px;
+}
+
+.widthControl {
+    max-width: 1080px;
+}
+
+.NavigationBar {
+    background-color: #43AE9A;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: -40px;
+    z-index: 10;
+
+    .topContect {
+        height: 40px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .socialIcons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            .icon {
+                cursor: pointer;
+                color: #111;
+
+                &:hover {
+                    color: #fff;
+                }
+            }
+        }
+
+        .contectDetails {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+    }
+
+    .NavContent {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+
+        .logoBox {
+            cursor: pointer;
+            user-select: none;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        .links {
+            display: flex;
+            gap: 0.25rem;
+
+            .NavLink {
+                cursor: pointer;
+                text-decoration: none;
+                color: #333;
+                min-width: 80px;
+
+                &:hover,
+                &.active {
+                    font-weight: 500;
+                    color: #fff;
+                }
+
+            }
+        }
+    }
+}
+
+.FooterBox {
+    height: 145px;
+    background-color: #fff;
+    display: flex;
+
+    .content {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #425BAE;
+    }
+
+
+    .GitLink {
+        user-select: none;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        text-decoration: none;
+        color: #111;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        .gitIcon {
+            font-size: 2.5rem;
+        }
+
+    }
+}
+
+@media (max-width:1200px) {
+    .widthControl {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
