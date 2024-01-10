@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import { useGetUser, useUserLoading } from '../../hooks'
 import { RegisterAndLoginPage } from '../RegisterAndLoginPage'
+import { LoadingPage } from './LoadingPage'
 
 export const AuthProtector = () => {
     let user = useGetUser()
@@ -8,11 +9,12 @@ export const AuthProtector = () => {
 
 
     if (loading) {
-        return <div>Loading</div>
+        return <LoadingPage />
     }
 
     return (
-        <>
-            {user ? <Outlet /> : <RegisterAndLoginPage type='login' />}</>
+        <div style={{ backgroundColor: "#F3F4F8", minHeight: "calc(100vh - 241px)" }}>
+            {user ? <Outlet /> : <RegisterAndLoginPage type='login' />}
+        </div>
     )
 }

@@ -18,6 +18,8 @@ const PORT = process.env.PORT;
 
 import HomeRouter from './routers/homeRouter.js';
 import AuthRouter from './routers/authRouter.js';
+import UserRouter from './routers/userRouter.js';
+import PersonRouter from './routers/personRouter.js';
 
 import errorHandler from './middleware/errorHandler.js'
 
@@ -33,6 +35,8 @@ app.use(logger)
 
 app.use('/', HomeRouter)
 app.use('/auth', AuthRouter)
+app.use('/user', UserRouter)
+app.use('/person', PersonRouter)
 
 
 app.all('*', (req, res) => {

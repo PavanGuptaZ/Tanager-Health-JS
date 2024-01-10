@@ -43,10 +43,14 @@ export const RegisterAndLoginPage = ({ type }) => {
     mutationKey: [`${type}`],
     mutationFn: () => RegisterAndLoginApi(type, inputValues),
     onSuccess: (data) => {
-      console.log(data)
+
       if (data.status === 'success') {
         dispatchData({ type: 'addUser', payload: data })
         toast.info("Welcome " + data.user.name, {
+          icon: () => <img src={favIcon} className='tosterIcon' />
+        })
+      } else if (data?.message) {
+        toast.warning(data.message, {
           icon: () => <img src={favIcon} className='tosterIcon' />
         })
       }

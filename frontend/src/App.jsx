@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/app.css';
+import './styles/components.css'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
@@ -15,10 +16,12 @@ function App() {
         refetchOnMount: false,
         refetchOnReconnect: false,
         retry: 1,
-        staleTime: 5 * 60 * 1000
+        staleTime: 5 * 60 * 1000,
+
       }
     }
   })
+
 
   return (
     <BrowserRouter>
@@ -37,7 +40,7 @@ function App() {
             pauseOnHover={false}
             theme="light"
           />
-          <ReactQueryDevtools buttonPosition='top-right' />
+          <ReactQueryDevtools buttonPosition='bottom-right' />
         </ContextProvider>
       </QueryClientProvider>
     </BrowserRouter>

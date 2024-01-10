@@ -30,3 +30,8 @@ export const useUserLoading = () => {
     return data.userLoading || false
 }
 
+export const useUserFetching = () => {
+    const data = useContext(UserContext)
+    return data.userFetching || false
+}
+

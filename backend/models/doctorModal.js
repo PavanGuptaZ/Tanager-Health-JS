@@ -5,8 +5,8 @@ const doctorSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        maxlength: [30, "Movie name must not have more than 100 characters"],
-        minlength: [5, "Movie name must have at least 4 charachters"],
+        maxlength: [30, "name must not have more than 30 characters"],
+        minlength: [5, "name must have at least 5 charachters"],
     },
     email: {
         type: String,
@@ -29,6 +29,17 @@ const doctorSchema = new mongoose.Schema({
         type: String,
         default: 'doctor',
         inmutable: true
+    },
+    status: {
+        type: String,
+        required: true,
+        enum: ['notapproved', 'approved']
+    },
+    profileIcons: {
+        type: Number,
+        min: 0,
+        max: 6,
+        default: 0
     }
 }, { timestamps: true })
 

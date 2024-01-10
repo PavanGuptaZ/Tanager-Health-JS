@@ -2,10 +2,14 @@
 
 ## Sample Images 
 
-![sample (1)](https://github.com/PavanGuptaZ/Tanager-Health/assets/144094802/7a1713e0-518e-489e-a176-42df8e94d69c)
+![sample 01](https://github.com/PavanGuptaZ/Tanager-Health/assets/144094802/6faeacb6-cff5-4fcb-bd03-9db56a3eb574)
 
-![sample (2)](https://github.com/PavanGuptaZ/Tanager-Health/assets/144094802/336d287d-1710-4214-9adc-5fce99065617)
+![sample 02](https://github.com/PavanGuptaZ/Tanager-Health/assets/144094802/6b95f930-052a-48b7-88c9-d4b95263f5d1)
 
-![sample (3)](https://github.com/PavanGuptaZ/Tanager-Health/assets/144094802/44d5be77-0d2c-48ff-94bb-0b397fc47ae9)
+![sample 03](https://github.com/PavanGuptaZ/Tanager-Health/assets/144094802/496aed8e-5a60-43f9-8eca-7f8492ae6e8b)
 
-![sample (4)](https://github.com/PavanGuptaZ/Tanager-Health/assets/144094802/6d57f58c-84b2-41cc-b41f-1c8ed94ced12)
+![sample 04](https://github.com/PavanGuptaZ/Tanager-Health/assets/144094802/1c1d1c71-c373-4414-bdd1-07f9a54ab6c3)
+
+![sample 05](https://github.com/PavanGuptaZ/Tanager-Health/assets/144094802/9762a8d5-de22-4d60-99b5-7a81f999dcec)
+
+![sample 06](https://github.com/PavanGuptaZ/Tanager-Health/assets/144094802/650f068c-59e9-415b-aa49-155e6037d7f1)

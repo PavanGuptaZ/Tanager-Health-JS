@@ -12,7 +12,8 @@ export const ContextProvider = ({ children }) => {
 
     const userQuery = useQuery({
         queryKey: ['refresh'],
-        queryFn: () => refreshApiFunction()
+        queryFn: () => refreshApiFunction(),
+        refetchInterval: 50 * 60 * 1000
     })
 
     useEffect(() => {
@@ -22,7 +23,12 @@ export const ContextProvider = ({ children }) => {
     }, [userQuery.data])
 
     return (
-        <UserContext.Provider value={{ ...data, dispatchData, userLoading: userQuery.isLoading }}>
+        <UserContext.Provider value={{
+            ...data,
+            dispatchData,
+            userLoading: userQuery.isLoading,
+            userFetching: userQuery.isFetching
+        }}>
             {children}
         </UserContext.Provider>
     )

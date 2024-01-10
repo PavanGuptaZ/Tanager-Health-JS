@@ -1,51 +1,46 @@
 import jwt from "jsonwebtoken";
-import UserModal from '../models/userModal.js'
 
 const verifyJWT = async (req, res, next) => {
-    const { ACCESS_TOKEN, REFRESH_TOKEN } = req.cookies
 
-    const verifyToken = async (token, secret, message) => {
-        return new Promise((resolve, reject) => {
-            jwt.verify(token, secret, async (err, decoded) => {
-                if (err) {
-                    return reject({ status: 403, message })
-                }
-                const userSearch = await UserModal.findOne({ email: decoded.email }).lean().exec()
-                if (!userSearch) {
-                    return reject({ status: 403, message: "user is not Register" })
-                }
+    const authHeaders = req.headers.authorization || req.headers.Authorization
 
-                delete userSearch.password
-                resolve(userSearch)
-            })
+    if (authHeaders || authHeaders?.startsWith('Bearer ')) {
+
+        const ACCESS_TOKEN = authHeaders.split(' ')[1]
+
+        jwt.verify(ACCESS_TOKEN, process.env.ACCESS_TOKEN, (err, decoded) => {
+            if (err) {
+                verifyRefreshToken(req, res, next)
+            } else {
+                req.user = decoded
+                next()
+            }
+
         })
+
+    } else {
+        verifyRefreshToken(req, res, next)
     }
-    try {
-        if (!ACCESS_TOKEN && !REFRESH_TOKEN) {
-            throw { status: 401, message: 'Unauthorization, please Login Again' }
-        }
-        let user
-        if (ACCESS_TOKEN) {
-            user = await verifyToken(ACCESS_TOKEN, process.env.ACCESS_TOKEN, "Forbidden, something went Wrong, refresh and try again")
 
-        } else {
-            user = await verifyToken(REFRESH_TOKEN, process.env.REFRESH_TOKEN, "Forbidden, something went Wrong, Login Again")
+    function verifyRefreshToken(req, res, next) {
+        const { REFRESH_TOKEN } = req.cookies
 
-            const accessToken = jwt.sign({ email: user.email }, process.env.ACCESS_TOKEN, { expiresIn: '1h' })
-            res.cookie(`ACCESS_TOKEN`, accessToken, {
-                // sameSite: 'None',
-                maxAge: 1 * 24 * 60 * 1000,
-                httpOnly: true,
-                // secure: false,
-            })
+        if (!REFRESH_TOKEN) {
+            return res.status(404).json({ status: 'error', message: "Please Login With credentials" })
         }
 
-        req.user = user
-        next()
+        jwt.verify(REFRESH_TOKEN, process.env.REFRESH_TOKEN, (err, decoded) => {
+            if (err) {
+                return res.status(401).json({ error: "Token verification failed" });
+            }
 
-    } catch (error) {
-        console.log(error)
-        res.status(error.status || 500).json({ message: error.message });
+            const accessToken = jwt.sign({ email: decoded.email, role: decoded.role, _id: decoded._id }, process.env.ACCESS_TOKEN, { expiresIn: '1h' })
+            res.setHeader(`ACCESS_TOKEN`, accessToken)
+
+            req.user = decoded
+            next()
+        })
+
     }
 }
 export default verifyJWT
